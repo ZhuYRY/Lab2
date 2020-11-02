@@ -1,0 +1,17 @@
+#' Title
+#'
+#' @param df a dataframe
+#' @param var_name "Average.Total.Payments", "Average.Covered.Charges", "Average.Medicare.Payments"
+#'
+#' @return a boxplot by DRG codes
+#' @export
+#'
+#' @examples
+boxplot_f <- function(df, var_name) {
+  df %>%
+    ggplot(aes(x = DRG.Definition, y = get(var_name))) +
+    geom_boxplot() +
+    labs(x = "DRG code",
+         y = gsub('\\.', ' ', var_name))
+    coord_flip()
+}
