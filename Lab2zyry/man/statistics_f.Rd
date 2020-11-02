@@ -9,7 +9,7 @@ statistics_f(df, option)
 \arguments{
 \item{df}{a dataframe (Given dataframe: Inpatient_Prospective_Payment)}
 
-\item{option}{"mean", "median", or "standard deviation" Have to choose one of them.}
+\item{option}{"mean", "median", or "sd" Have to choose one of them.}
 }
 \value{
 the chosen statistic over all of the DRG codes for average Medicare payments
@@ -19,5 +19,5 @@ Title
 }
 \examples{
 data = read.csv("lab2zyry/data/Payments.csv")
-statistics_f(data, "mean")
+statistics_f(data, mean)
 }

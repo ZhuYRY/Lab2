@@ -4,13 +4,14 @@
 #' @param var_name "Average.Total.Payments", "Average.Covered.Charges", "Average.Medicare.Payments"
 #'
 #' @return a boxplot by DRG codes
-#' @import ggplot2, dplyr
+#' @import ggplot2, dplyr, knitr
 #'
 #' @export
 #'
 #' @examples
 #' data = read.csv("lab2zyry/data/Payments.csv")
 #' boxplot_f(data, "Average.Total.Payments")
+
 boxplot_f <- function(df, var_name) {
   title = paste("Boxplot of DRG code vs.",
                 gsub('\\.', ' ', var_name))

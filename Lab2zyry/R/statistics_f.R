@@ -1,24 +1,30 @@
 #' Title
 #'
 #' @param df a dataframe (Given dataframe: Inpatient_Prospective_Payment)
-#' @param option "mean", "median", or "standard deviation" Have to choose one of them.
+#' @param option "mean", "median", or "sd" Have to choose one of them.
 #'
 #' @return the chosen statistic over all of the DRG codes for average Medicare payments
+#' @import ggplot2, dplyr, knitr
 #' @export
 #'
 #' @examples
 #' data = read.csv("lab2zyry/data/Payments.csv")
-#' statistics_f(data, "mean")
+#' statistics_f(data, mean)
 statistics_f <- function(df, option) {
-  # Select the column we are interested in:
-  # 'Average.Medicare.Payments'
-  vec = df$'Average.Medicare.Payments'
-  if (option == "mean") {                  ## Calculate Mean
-    return(mean(vec))
-  } else if (option == "median") {         ## Calculate Median
-    return(median(vec))
-  } else {                                 ## Calculate Standard Deviation
-    return(sd(vec))
-  }
+
+table <-  df %>%
+    # Extract the DRG codes
+    mutate(DRG.Num = substr(df$DRG.Definition, 0, 3)) %>%
+    # Group by DRG code
+    group_by(DRG.Num) %>%
+    # select out DRG code and Payments
+    select(DRG.Num, Average.Medicare.Payments) %>%
+    # Calculate required statistics
+    summarise(stat = option(Average.Medicare.Payments))
+# Return a well-formatted table
+opt <- deparse(substitute(option))
+
+kable(table,
+      col.names = c("DRG name", opt))   # Rename columns
 }
 

@@ -11,7 +11,12 @@ Description: More about what it does (maybe more than one line)
   payments.
 Imports: 
   ggplot2, 
-  dplyr
+  dplyr,
+  knitr
+Depends:
+  ggplot2,
+  dplyr,
+  knitr
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
