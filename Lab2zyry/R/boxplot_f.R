@@ -9,13 +9,17 @@
 #' @export
 #'
 #' @examples
+#' data = read.csv("lab2zyry/data/Payments.csv")
+#' boxplot_f(data, "Average.Total.Payments")
 boxplot_f <- function(df, var_name) {
-  title = paste("Boxplot of DRG code vs.", gsub('\\.', ' ', var_name))
+  title = paste("Boxplot of DRG code vs.",
+                gsub('\\.', ' ', var_name))
   df %>%
     # Select only first 3 digits of DRG code
     mutate(DRG.Num = substr(df$DRG.Definition, 0, 3)) %>%
     # Initialize ggplot with x = DRG code, y = chosen variable
-    ggplot(aes(x = DRG.Num, y = get(var_name))) +
+    ggplot(aes(x = DRG.Num,
+               y = get(var_name))) +
     # Make the boxplot
     geom_boxplot() +
     # Customize the plot

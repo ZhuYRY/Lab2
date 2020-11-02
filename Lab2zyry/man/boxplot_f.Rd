@@ -17,3 +17,7 @@ a boxplot by DRG codes
 \description{
 Title
 }
+\examples{
+data = read.csv("lab2zyry/data/Payments.csv")
+boxplot_f(data, "Average.Total.Payments")
+}

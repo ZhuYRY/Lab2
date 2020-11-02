@@ -7,6 +7,8 @@
 #' @export
 #'
 #' @examples
+#' data = read.csv("lab2zyry/data/Payments.csv")
+#' statistics_f(data, "mean")
 statistics_f <- function(df, option) {
   # Select the column we are interested in:
   # 'Average.Medicare.Payments'

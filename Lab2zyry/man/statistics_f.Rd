@@ -17,3 +17,7 @@ the chosen statistic over all of the DRG codes for average Medicare payments
 \description{
 Title
 }
+\examples{
+data = read.csv("lab2zyry/data/Payments.csv")
+statistics_f(data, "mean")
+}
